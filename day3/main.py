@@ -52,8 +52,16 @@ def ticket_update(id: str, payload: TicketCreate):
     if not ObjectId.is_valid(id):
         raise HTTPException(detail="Invalid ticket ID", status_code=404)
     ticket_dict = payload.model_dump()
-    result = ticket_collection.replace_one({"_id": ObjectId(id)}, ticket_dict)
-    if not result.matched_count:
+    result = ticket_collection.update_one({"_id": ObjectId(id)}, {"$set": ticket_dict})
+    if  result.matched_count==0:
         raise HTTPException(detail="Ticket not found", status_code=404)
-    updated_ticket = ticket_collection.find_one({"_id": ObjectId(id)})
-    return ticket_helper(updated_ticket)
+    new_ticket = ticket_collection.find_one({"_id": ObjectId(id)})
+    return ticket_helper(new_ticket)
+@app.delete("/tickets/{id}")
+def ticket_delete(id: str):
+    if not ObjectId.is_valid(id):
+        raise HTTPException(detail="Invalid ticket ID", status_code=403)
+    result = ticket_collection.delete_one({"_id": ObjectId(id)})
+    if result.deleted_count == 0:#ticket was not there but tried to delete
+        raise HTTPException(detail="Ticket not found", status_code=404)
+    return {"message": "Ticket deleted successfully"}
