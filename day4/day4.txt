@@ -1,0 +1,44 @@
+html?
+    language to define a content of web doc
+    learn in mozilla docs
+
+CSS?
+    present or to make the html doc content as look and feel
+Single page application(SPI)-Frameworks
+    to make web page as application 
+    Examples:React JS,Angular,VUE JS(vitte template)
+React JS-
+    JSX=JS+XML(HTML)
+    Nodejs based fronted framework or fronted library /or
+    Nodejs based UI framework
+vitte template
+  
+    npm create vite@latest my-vue-app -- --template vue
+    change above as
+    
+
+    npm create vite@latest calc_app -- --template react
+    which linter to use?
+        ESLINT
+    Install with npm and start now ?
+        NO
+     cd calc_app
+    npm install-packages
+    npm run dev -to start the react project
+package.json is a nodejs project
+Steps that react app is running?
+    React will take the snapshot of the single page is DOM
+        it is  a virtual DOM
+        react holds the virtual DOM
+        if any changes  will be updated to DOM
+        
+    When give the url of the react app server:
+    1.index.html will be loaded first
+    2.main.jsx will be loaded for index.html    
+        entry point for react app
+    What is the react component?
+        component=ui+ui logic
+
+
+
+
