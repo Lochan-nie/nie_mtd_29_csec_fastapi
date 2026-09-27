@@ -32,7 +32,7 @@ function Login() {
                 style={{maxWidth: '400px'}}
             >
                 <h2 className="text-center mb-4">
-                    Ticket Management
+                    Complient Management
                 </h2>
 
                 <label className="form-label">

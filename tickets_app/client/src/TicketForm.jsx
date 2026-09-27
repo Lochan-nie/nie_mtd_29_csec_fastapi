@@ -41,7 +41,7 @@ function TicketForm() {
                 }
             });
 
-            alert('Ticket updated');
+            alert('Complient updated');
         } else {
             await api.post('/tickets', form, {
                 headers: {
@@ -49,7 +49,7 @@ function TicketForm() {
                 }
             });
 
-            alert('Ticket created');
+            alert('Complient created');
         }
 
         navigate('/tickets');
@@ -61,7 +61,7 @@ function TicketForm() {
             <div className="card p-4 mx-auto" style={{maxWidth: '600px'}}>
 
                 <h2>
-                    {id ? 'Edit Ticket' : 'New Ticket'}
+                    {id ? 'Edit Complaint' : 'New Complaint'}
                 </h2>
 
                 <label className="form-label">Title</label>
@@ -103,9 +103,11 @@ function TicketForm() {
                     }
                 >
                     <option value="">Select Category</option>
-                    <option value="Hardware">Hardware</option>
-                    <option value="Software">Software</option>
-                    <option value="Network">Network</option>
+                    <option value="order issue">order issue</option>
+                    <option value="delivery">delivery</option>
+                    <option value="return">return</option>
+                    <option value="refund">refund</option>
+                    <option value="product mismatched">product mismatched</option>
                 </select>
 
                 <label className="form-label">Status</label>
@@ -132,7 +134,7 @@ function TicketForm() {
                     className="btn btn-primary"
                     onClick={saveTicket}
                 >
-                    {id ? 'Update Ticket' : 'Create Ticket'}
+                    {id ? 'Update Complaint' : 'Create Complaint'}
                 </button>
 
             </div>

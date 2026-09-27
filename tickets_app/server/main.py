@@ -152,7 +152,7 @@ def tickets_read_all(current_user=Depends(require_roles(1, 2, 3, 4))):
 @app.get("/tickets/{id}", response_model=TicketResponse)
 def ticket_read_by_id(id: str,  current_user=Depends(require_roles(1, 2, 3, 4))):
     if not ObjectId.is_valid(id):
-        raise HTTPException(status_code=400, detail="Invalid ticket ID format")
+        raise HTTPException(status_code=400, detail="Invalid Complient ID format")
     ticket_result = ticket_collection.find_one({"_id": ObjectId(id)})
     if not ticket_result:
         raise HTTPException(status_code=404, detail="Ticket not found")
@@ -161,18 +161,18 @@ def ticket_read_by_id(id: str,  current_user=Depends(require_roles(1, 2, 3, 4)))
 @app.put("/tickets/{id}", response_model=TicketResponse)
 def ticket_update(id: str, payload : TicketCreate,  current_user=Depends(require_roles(2, 3, 4))):
     if not ObjectId.is_valid(id):
-        raise HTTPException(status_code=400, detail="Invalid ticket ID format")
+        raise HTTPException(status_code=400, detail="Invalid Complient ID format")
     result = ticket_collection.update_one({"_id": ObjectId(id)}, {"$set": payload.model_dump()})
     if result.matched_count == 0:
-        raise HTTPException(status_code=404, detail="Ticket not found")
+        raise HTTPException(status_code=404, detail="Complient not found")
     new_ticket = ticket_collection.find_one({"_id" : ObjectId(id)})
     return ticket_helper(new_ticket)
 
 @app.delete("/tickets/{id}")
 def ticket_delete(id: str,  current_user=Depends(require_roles(4))):
     if not ObjectId.is_valid(id):
-        raise HTTPException(status_code=400, detail="Invalid ticket ID format")
+        raise HTTPException(status_code=400, detail="Invalid Complient ID format")
     result = ticket_collection.delete_one({"_id": ObjectId(id)})
     if result.deleted_count == 0:
-        raise HTTPException(status_code=404, detail="Ticket not found")
-    return {"message" : "ticket deleted successfully"}
+        raise HTTPException(status_code=404, detail="Complient  not found")
+    return {"message" : "Complient deleted successfully"}

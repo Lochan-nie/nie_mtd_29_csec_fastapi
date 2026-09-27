@@ -33,16 +33,16 @@ function Navigation() {
                 {token ? (
                     <>
                         <Link className="btn btn-light me-2" to="/tickets">
-                            Tickets
+                            Complaints
                         </Link>
 
                         <Link className="btn btn-light me-2" to="/tickets/new">
-                            New Ticket
+                            New Complaint
                         </Link>
 
-                        <Link className="btn btn-light me-2" to="/register">
+                        {/* <Link className="btn btn-light me-2" to="/register">
                             Register
-                        </Link>
+                        </Link> */}
 
                         <span className="text-white me-3">
                             {username}
